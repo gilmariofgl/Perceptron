@@ -3,14 +3,8 @@ package perceptron.telas;
 import java.awt.Toolkit;
 import java.util.Random;
 
-/**
- * @author Francisco Gilmário de Lima
- */
 public class Principal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Perceptron
-     */
     public Principal() {
         initComponents();
         randomizar();
@@ -24,38 +18,38 @@ public class Principal extends javax.swing.JFrame {
     public double w0, w1, w2, w3, y, v1 = 0, v2 = 0, v3 = 0;
     public int x1, x2, x3;
     public boolean ver;
-    public static boolean atualizar;
 
     public void randomizar() {
-        Random random = new Random();
+        Random randomizar = new Random();
 
-        w0 = random.nextDouble() / 10;
-        w1 = random.nextDouble() / 10;
-        w2 = random.nextDouble() / 10;
-        w3 = random.nextDouble() / 10;
+        w0 = randomizar.nextDouble() / 10;
+        w1 = randomizar.nextDouble() / 10;
+        w2 = randomizar.nextDouble() / 10;
+        w3 = randomizar.nextDouble() / 10;
     }
 
+    // Muda o valor do peso caso tenha errado
     public void erro(double valorY) {
         // n = taxa de aprendizado
         double n = 0.05;
-
+        // Fórmula: w = w + n (y - y) * x
+        // peso = peso + taxa de aprendizado + (saida esperada - saida atual) * entrada
         if (valorY >= 1) {
             w0 = w0 + (n * (0 - valorY) * (-1));
-            w1 = w1 + (n * (0 - valorY) * (x1));
+            w1 = w1 + (n * (0 - valorY) * x1);
             w2 = w2 + (n * (0 - valorY) * x2);
             w3 = w3 + (n * (0 - valorY) * x3);
-
         } else {
             w0 = w0 + (n * (1 - valorY) * (-1));
-            w1 = w1 + (n * (1 - valorY) * (x1));
+            w1 = w1 + (n * (1 - valorY) * x1);
             w2 = w2 + (n * (1 - valorY) * x2);
             w3 = w3 + (n * (1 - valorY) * x3);
-
         }
+        // Atualiza as informações
         informacoes();
-
     }
 
+    // Apenas informações
     public void informacoes() {
         valorW0.setText("W0 " + String.valueOf(w0));
         valorW1.setText("W1 " + String.valueOf(w1));
@@ -68,9 +62,9 @@ public class Principal extends javax.swing.JFrame {
         somaW3.setText("S3 " + v3);
 
         valorY.setText("Y " + y);
-
     }
 
+    // Muda o ícone
     private void icone() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/perceptron/imagens/icone32.png")));
     }
@@ -365,29 +359,29 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saidaNomeclaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saidaNomeclaturaActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_saidaNomeclaturaActionPerformed
 
     private void somaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_somaMouseClicked
-
+        // Verifica se tem algum texto        
         if (!entradaX1.getText().equals("")) {
+            // Atribue o valor da entrada multiplicado com o peso
             v1 = (Integer.parseInt(entradaX1.getText())) * w1;
         } else {
             v1 = 0;
         }
-
         if (!entradaX2.getText().equals("")) {
             v2 = (Integer.parseInt(entradaX2.getText())) * w2;
         } else {
             v2 = 0;
         }
-
         if (!entradaX3.getText().equals("")) {
             v3 = (Integer.parseInt(entradaX3.getText())) * w3;
         } else {
             v3 = 0;
         }
 
+        // Soma os valores multiplicados e dá o resultado dasaída (y)
         y = (-1 * w0) + v1 + v2 + v3;
 
         if (y >= 1) {
@@ -396,8 +390,8 @@ public class Principal extends javax.swing.JFrame {
             saidaNomeclatura.setText(nomeclaturaY0.getText());
         }
 
+        // Atualiza as informações
         informacoes();
-
     }//GEN-LAST:event_somaMouseClicked
 
     private void somaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_somaMousePressed
@@ -417,22 +411,16 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_salvarMouseClicked
 
     private void visualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visualizarMouseClicked
-
         if (ver) {
             visualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/perceptron/imagens/verNao.png")));
-
             painel.setVisible(false);
-
             ver = false;
         } else {
             visualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/perceptron/imagens/verSim.png")));
-
             painel.setVisible(true);
-
             ver = true;
         }
     }//GEN-LAST:event_visualizarMouseClicked
-
     private void erroMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_erroMouseReleased
         erro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/perceptron/imagens/erroPequeno.png")));
     }//GEN-LAST:event_erroMouseReleased
