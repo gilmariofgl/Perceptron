@@ -3,13 +3,13 @@ package perceptron.telas;
 import java.awt.Toolkit;
 import java.util.Random;
 
-public class Principal extends javax.swing.JFrame {
+public final class Principal extends javax.swing.JFrame {
 
     public Principal() {
         initComponents();
         randomizar();
         icone();
-        painel.setVisible(false);
+        painelVisualizar.setVisible(false);
         rotuloAbrir.setVisible(false);
         rotuloSalvar.setVisible(false);
         rotuloNovo.setVisible(false);
@@ -74,6 +74,27 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         fundo = new javax.swing.JPanel();
+        nomeTitulo = new javax.swing.JTextField();
+        titulo = new javax.swing.JLabel();
+        rotuloErro = new javax.swing.JLabel();
+        erro = new javax.swing.JLabel();
+        rotuloSalvar = new javax.swing.JLabel();
+        salvar = new javax.swing.JLabel();
+        rotuloNovo = new javax.swing.JLabel();
+        novo = new javax.swing.JLabel();
+        rotuloAbrir = new javax.swing.JLabel();
+        abrir = new javax.swing.JLabel();
+        visualizar = new javax.swing.JLabel();
+        painelVisualizar = new javax.swing.JPanel();
+        valorY = new javax.swing.JLabel();
+        valorW0 = new javax.swing.JLabel();
+        valorW1 = new javax.swing.JLabel();
+        valorW2 = new javax.swing.JLabel();
+        valorW3 = new javax.swing.JLabel();
+        somaW0 = new javax.swing.JLabel();
+        somaW1 = new javax.swing.JLabel();
+        somaW2 = new javax.swing.JLabel();
+        somaW3 = new javax.swing.JLabel();
         soma = new javax.swing.JLabel();
         nomeclaturaX1 = new javax.swing.JTextField();
         entradaX1 = new javax.swing.JTextField();
@@ -85,25 +106,6 @@ public class Principal extends javax.swing.JFrame {
         nomeclaturaY1 = new javax.swing.JTextField();
         saidaNomeclatura = new javax.swing.JTextField();
         imagemPerceptron = new javax.swing.JLabel();
-        rotuloErro = new javax.swing.JLabel();
-        erro = new javax.swing.JLabel();
-        rotuloSalvar = new javax.swing.JLabel();
-        salvar = new javax.swing.JLabel();
-        rotuloNovo = new javax.swing.JLabel();
-        novo = new javax.swing.JLabel();
-        rotuloAbrir = new javax.swing.JLabel();
-        abrir = new javax.swing.JLabel();
-        visualizar = new javax.swing.JLabel();
-        painel = new javax.swing.JPanel();
-        valorY = new javax.swing.JLabel();
-        valorW0 = new javax.swing.JLabel();
-        valorW1 = new javax.swing.JLabel();
-        valorW2 = new javax.swing.JLabel();
-        valorW3 = new javax.swing.JLabel();
-        somaW0 = new javax.swing.JLabel();
-        somaW1 = new javax.swing.JLabel();
-        somaW2 = new javax.swing.JLabel();
-        somaW3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PERCEPTRON");
@@ -112,73 +114,19 @@ public class Principal extends javax.swing.JFrame {
         fundo.setBackground(new java.awt.Color(255, 255, 255));
         fundo.setLayout(null);
 
-        soma.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                somaMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                somaMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                somaMouseReleased(evt);
-            }
-        });
-        fundo.add(soma);
-        soma.setBounds(140, 50, 410, 160);
+        nomeTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        nomeTitulo.setBorder(null);
+        fundo.add(nomeTitulo);
+        nomeTitulo.setBounds(30, 25, 740, 30);
 
-        nomeclaturaX1.setBorder(null);
-        fundo.add(nomeclaturaX1);
-        nomeclaturaX1.setBounds(40, 9, 90, 20);
-
-        entradaX1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        entradaX1.setBorder(null);
-        fundo.add(entradaX1);
-        entradaX1.setBounds(20, 38, 80, 30);
-
-        nomeclaturaX2.setBorder(null);
-        fundo.add(nomeclaturaX2);
-        nomeclaturaX2.setBounds(40, 80, 90, 20);
-
-        entradaX2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        entradaX2.setBorder(null);
-        fundo.add(entradaX2);
-        entradaX2.setBounds(20, 110, 80, 30);
-
-        nomeclaturaX3.setBorder(null);
-        fundo.add(nomeclaturaX3);
-        nomeclaturaX3.setBounds(40, 152, 90, 20);
-
-        entradaX3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        entradaX3.setBorder(null);
-        fundo.add(entradaX3);
-        entradaX3.setBounds(20, 182, 80, 30);
-
-        nomeclaturaY0.setBorder(null);
-        fundo.add(nomeclaturaY0);
-        nomeclaturaY0.setBounds(590, 56, 160, 20);
-
-        nomeclaturaY1.setBorder(null);
-        fundo.add(nomeclaturaY1);
-        nomeclaturaY1.setBounds(590, 82, 160, 20);
-
-        saidaNomeclatura.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        saidaNomeclatura.setBorder(null);
-        saidaNomeclatura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saidaNomeclaturaActionPerformed(evt);
-            }
-        });
-        fundo.add(saidaNomeclatura);
-        saidaNomeclatura.setBounds(560, 110, 190, 30);
-
-        imagemPerceptron.setIcon(new javax.swing.ImageIcon(getClass().getResource("/perceptron/imagens/perceptronDesativada.png"))); // NOI18N
-        fundo.add(imagemPerceptron);
-        imagemPerceptron.setBounds(10, 10, 760, 232);
+        titulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/perceptron/imagens/titulo.png"))); // NOI18N
+        fundo.add(titulo);
+        titulo.setBounds(25, 20, 750, 40);
 
         rotuloErro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         rotuloErro.setText("Erro");
         fundo.add(rotuloErro);
-        rotuloErro.setBounds(24, 350, 40, 14);
+        rotuloErro.setBounds(20, 360, 40, 14);
 
         erro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/perceptron/imagens/erroPequeno.png"))); // NOI18N
         erro.setText("erro");
@@ -200,12 +148,12 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         fundo.add(erro);
-        erro.setBounds(20, 300, 50, 50);
+        erro.setBounds(20, 310, 50, 50);
 
         rotuloSalvar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         rotuloSalvar.setText("Salvar");
         fundo.add(rotuloSalvar);
-        rotuloSalvar.setBounds(80, 350, 50, 14);
+        rotuloSalvar.setBounds(80, 360, 50, 14);
 
         salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/perceptron/imagens/salvarPequeno.png"))); // NOI18N
         salvar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -226,12 +174,12 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         fundo.add(salvar);
-        salvar.setBounds(80, 300, 50, 50);
+        salvar.setBounds(80, 310, 50, 50);
 
         rotuloNovo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         rotuloNovo.setText("Novo");
         fundo.add(rotuloNovo);
-        rotuloNovo.setBounds(140, 350, 50, 14);
+        rotuloNovo.setBounds(140, 360, 50, 14);
 
         novo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/perceptron/imagens/novoPequeno.png"))); // NOI18N
         novo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -243,12 +191,12 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         fundo.add(novo);
-        novo.setBounds(140, 300, 50, 50);
+        novo.setBounds(140, 310, 50, 50);
 
         rotuloAbrir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         rotuloAbrir.setText("Abrir");
         fundo.add(rotuloAbrir);
-        rotuloAbrir.setBounds(203, 350, 40, 14);
+        rotuloAbrir.setBounds(200, 360, 40, 14);
 
         abrir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/perceptron/imagens/abrirPequeno.png"))); // NOI18N
         abrir.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -260,7 +208,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         fundo.add(abrir);
-        abrir.setBounds(200, 300, 50, 50);
+        abrir.setBounds(200, 310, 50, 50);
 
         visualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/perceptron/imagens/verNao.png"))); // NOI18N
         visualizar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -269,9 +217,9 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         fundo.add(visualizar);
-        visualizar.setBounds(440, 300, 60, 50);
+        visualizar.setBounds(370, 310, 60, 50);
 
-        painel.setBackground(new java.awt.Color(250, 250, 255));
+        painelVisualizar.setBackground(new java.awt.Color(250, 250, 255));
 
         valorY.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
 
@@ -291,57 +239,120 @@ public class Principal extends javax.swing.JFrame {
 
         somaW3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
 
-        javax.swing.GroupLayout painelLayout = new javax.swing.GroupLayout(painel);
-        painel.setLayout(painelLayout);
-        painelLayout.setHorizontalGroup(
-            painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelLayout.createSequentialGroup()
+        javax.swing.GroupLayout painelVisualizarLayout = new javax.swing.GroupLayout(painelVisualizar);
+        painelVisualizar.setLayout(painelVisualizarLayout);
+        painelVisualizarLayout.setHorizontalGroup(
+            painelVisualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelVisualizarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelVisualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(valorY, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(painelLayout.createSequentialGroup()
-                        .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(painelLayout.createSequentialGroup()
+                    .addGroup(painelVisualizarLayout.createSequentialGroup()
+                        .addGroup(painelVisualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(painelVisualizarLayout.createSequentialGroup()
                                 .addComponent(valorW0, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)
                                 .addComponent(somaW0, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(painelLayout.createSequentialGroup()
+                            .addGroup(painelVisualizarLayout.createSequentialGroup()
                                 .addComponent(valorW1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)
                                 .addComponent(somaW1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(painelLayout.createSequentialGroup()
+                            .addGroup(painelVisualizarLayout.createSequentialGroup()
                                 .addComponent(valorW2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)
                                 .addComponent(somaW2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(painelLayout.createSequentialGroup()
+                            .addGroup(painelVisualizarLayout.createSequentialGroup()
                                 .addComponent(valorW3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)
                                 .addComponent(somaW3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        painelLayout.setVerticalGroup(
-            painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelLayout.createSequentialGroup()
+        painelVisualizarLayout.setVerticalGroup(
+            painelVisualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelVisualizarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelVisualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(valorW0, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(somaW0, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelVisualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(valorW1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(somaW1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelVisualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(valorW2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(somaW2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelVisualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(valorW3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(somaW3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(valorY, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        fundo.add(painel);
-        painel.setBounds(500, 280, 270, 70);
+        fundo.add(painelVisualizar);
+        painelVisualizar.setBounds(430, 290, 270, 70);
+
+        soma.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                somaMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                somaMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                somaMouseReleased(evt);
+            }
+        });
+        fundo.add(soma);
+        soma.setBounds(130, 90, 420, 190);
+
+        nomeclaturaX1.setBorder(null);
+        fundo.add(nomeclaturaX1);
+        nomeclaturaX1.setBounds(50, 69, 90, 20);
+
+        entradaX1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        entradaX1.setBorder(null);
+        fundo.add(entradaX1);
+        entradaX1.setBounds(30, 98, 80, 30);
+
+        nomeclaturaX2.setBorder(null);
+        fundo.add(nomeclaturaX2);
+        nomeclaturaX2.setBounds(50, 140, 90, 20);
+
+        entradaX2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        entradaX2.setBorder(null);
+        fundo.add(entradaX2);
+        entradaX2.setBounds(30, 170, 80, 30);
+
+        nomeclaturaX3.setBorder(null);
+        fundo.add(nomeclaturaX3);
+        nomeclaturaX3.setBounds(50, 213, 90, 20);
+
+        entradaX3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        entradaX3.setBorder(null);
+        fundo.add(entradaX3);
+        entradaX3.setBounds(30, 242, 80, 30);
+
+        nomeclaturaY0.setBorder(null);
+        fundo.add(nomeclaturaY0);
+        nomeclaturaY0.setBounds(600, 143, 160, 20);
+
+        nomeclaturaY1.setBorder(null);
+        fundo.add(nomeclaturaY1);
+        nomeclaturaY1.setBounds(600, 116, 160, 20);
+
+        saidaNomeclatura.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        saidaNomeclatura.setBorder(null);
+        saidaNomeclatura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saidaNomeclaturaActionPerformed(evt);
+            }
+        });
+        fundo.add(saidaNomeclatura);
+        saidaNomeclatura.setBounds(570, 170, 190, 30);
+
+        imagemPerceptron.setIcon(new javax.swing.ImageIcon(getClass().getResource("/perceptron/imagens/perceptronDesativada.png"))); // NOI18N
+        fundo.add(imagemPerceptron);
+        imagemPerceptron.setBounds(20, 70, 760, 232);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -351,7 +362,7 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fundo, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+            .addComponent(fundo, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
         );
 
         pack();
@@ -413,11 +424,11 @@ public class Principal extends javax.swing.JFrame {
     private void visualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visualizarMouseClicked
         if (ver) {
             visualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/perceptron/imagens/verNao.png")));
-            painel.setVisible(false);
+            painelVisualizar.setVisible(false);
             ver = false;
         } else {
             visualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/perceptron/imagens/verSim.png")));
-            painel.setVisible(true);
+            painelVisualizar.setVisible(true);
             ver = true;
         }
     }//GEN-LAST:event_visualizarMouseClicked
@@ -513,13 +524,14 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel erro;
     private javax.swing.JPanel fundo;
     private javax.swing.JLabel imagemPerceptron;
+    private javax.swing.JTextField nomeTitulo;
     private javax.swing.JTextField nomeclaturaX1;
     private javax.swing.JTextField nomeclaturaX2;
     private javax.swing.JTextField nomeclaturaX3;
     private javax.swing.JTextField nomeclaturaY0;
     private javax.swing.JTextField nomeclaturaY1;
     private javax.swing.JLabel novo;
-    private javax.swing.JPanel painel;
+    private javax.swing.JPanel painelVisualizar;
     private javax.swing.JLabel rotuloAbrir;
     private javax.swing.JLabel rotuloErro;
     private javax.swing.JLabel rotuloNovo;
@@ -531,6 +543,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel somaW1;
     private javax.swing.JLabel somaW2;
     private javax.swing.JLabel somaW3;
+    private javax.swing.JLabel titulo;
     private javax.swing.JLabel valorW0;
     private javax.swing.JLabel valorW1;
     private javax.swing.JLabel valorW2;
